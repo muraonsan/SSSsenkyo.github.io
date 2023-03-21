@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mmegami sytem</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="murao.ico">
+    <style>
+      /* Style for the menu bar */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgb(140, 233, 233);
+        padding: 10px;
+      }
+
+      /* Style for the menu items */
+      nav ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav li {
+        margin: 0 10px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: black;
+      }
+
+      /* Style for the image and text */
+      nav .right {
+        display: flex;
+        align-items: center;
+      }
+
+      nav .right img {
+        height: 30px;
+        margin-right: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div style="text-align:center;">
+      <p style="font-size: 20px;" class="text">◇&emsp;19th立候補者情報&emsp;◇</p>
+      <p style="font-size: 20px;" class="text">☆No.1 muraokun☆</p>
+    </div>
+    <br>
+    <br><br>
+    <hr width="400" color="gree">
+    <br><br>
+    <div style="text-align:center;">
+        <p style="font-size: 20px;" class="text">◇ゲーマータグ : muraokun</p>
+        <p style="font-size: 20px;" class="text">◇キャッチコピー : むらおん</p>
+        <p style="font-size: 18px;" class="text">◇意気込み：前期以上に仕事を頑張るのでよろしくお願いします！<br>今期はタイプミスも減らします！</p>
+        <p style="font-size: 18px;" class="text">◇主要実績:監督生・選挙管理委員・元9,15,16,17,18thサポスタ</p>
+    </div>
+    <br><br>
+    <div style="text-align:center;">
+        <p style="font-size: 20px;" class="text">◇&emsp;画像&emsp;◇</p>
+        <img src="images/19th/システム用.png" alt="muraonskin">
+    <br><br><br><br><br>
+    <footer>
+      <p>&copy; 2023 muraokun</p>
+    </footer>
+  </body>
+</html>
