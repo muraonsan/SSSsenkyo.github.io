@@ -97,7 +97,7 @@
   }
   /*ボタンにカーソルを持って行ったときのリンク色*/
   .linkcolorchange:hover {
-    color: rgb(9, 255, 0);
+    color: rgb(229, 255, 0);
   }
   /*rumty アイコン円*/
   .circleRumty {
