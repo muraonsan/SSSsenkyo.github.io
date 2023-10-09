@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>megami web</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="murao.ico">
+    <style>
+      /* Style for the menu bar */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgb(140, 233, 233);
+        padding: 10px;
+      }
+
+      /* Style for the menu items */
+      nav ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav li {
+        margin: 0 10px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: black;
+      }
+
+      /* Style for the image and text */
+      nav .right {
+        display: flex;
+        align-items: center;
+      }
+
+      nav .right img {
+        height: 30px;
+        margin-right: 10px;
+      }
+
+      #jst-time {
+      font-size: 50px; /* 文字サイズを50に設定 */
+      text-align: center; /* テキストを中央に揃える */
+    }
+
+    </style>
+  </head>
+  <body>
+    <div style="text-align:center;">
+    <p style="font-size: 30px; color: blue;" class="text">◇&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Live Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;◇</p>
+    </div>
+
+    <div>
+        <a class="button-Twitter linkcolorchange" href="https://muraonsan.github.io/muraonsss/">←</a><br><br>
+    </div>
+
+    <p id="jst-time">ここにJSTが表示されます</p>
+
+  <script>
+    function updateJST() {
+      const jstTimeElement = document.getElementById('jst-time');
+      const jstTime = moment().utcOffset(9 * 60); // UTC+9（JST）のオフセットを適用
+      const jstTimeString = jstTime.format('YYYY-MM-DD HH:mm:ss');
+
+      jstTimeElement.textContent = '日本標準時: ' + jstTimeString;
+    }
+
+    // 初回表示
+    updateJST();
+
+    // 1秒ごとに更新
+    setInterval(updateJST, 1000);
+  </script>
+
+    
+    <footer>
+      <p>&copy; 2023 muraokun&emsp;無断転用原則禁止</p>
+    </footer>
+  </body>
+</html>
