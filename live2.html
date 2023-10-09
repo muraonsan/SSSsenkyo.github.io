@@ -94,6 +94,11 @@
               const weatherInfoElement = document.getElementById('weather-info');
               weatherInfoElement.textContent = '天気情報の取得に失敗しました。';
             });
+
+            //天気情報の自動更新
+            getWeather();
+          setInterval(getWeather, 10 * 60 * 1000);
+
         }, function(error) {
           console.error('位置情報の取得に失敗しました。', error);
           const locationElement = document.getElementById('location');
