@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>megami web</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="murao.ico">
+    <style>
+      h1, p#location, p#weather-info {
+      text-align: center; /* h1要素とp要素のテキストを中央に揃える */
+      font-size: 40px; /* テキストの文字サイズを40pxに設定 */
+    }
+      /* Style for the menu bar */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgb(140, 233, 233);
+        padding: 10px;
+      }
+
+      /* Style for the menu items */
+      nav ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav li {
+        margin: 0 10px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: black;
+      }
+
+      /* Style for the image and text */
+      nav .right {
+        display: flex;
+        align-items: center;
+      }
+
+      nav .right img {
+        height: 30px;
+        margin-right: 10px;
+      }
+     
+
+
+    </style>
+  </head>
+  <body>
+    <div style="text-align:center;">
+    <p style="font-size: 30px; color: blue;" class="text">◇&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Live Weather&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;◇</p>
+    </div>
+
+    <div>
+        <a class="button-Twitter linkcolorchange" href="https://muraonsan.github.io/muraonsss/">←</a><br><br>
+    </div>
+
+    <h1>現在地の天気情報</h1>
+  <p id="location">位置情報を取得中...</p>
+  <p id="weather-info">天気情報を取得中...</p>
+
+  <script>
+    function getLocation() {
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+
+          const locationElement = document.getElementById('location');
+          locationElement.textContent = `現在の位置：緯度 ${latitude.toFixed(2)}, 経度 ${longitude.toFixed(2)}`;
+
+          // OpenWeatherMap APIのAPIキーを設定
+          const apiKey = '3041d2d94778e856aa9474ddef7a5d1e'; // ここにあなたのOpenWeatherMap APIキーを入力
+
+          // OpenWeatherMap APIを呼び出して天気情報を取得
+          fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric&lang=ja`)
+            .then(response => response.json())
+            .then(data => {
+              const temperature = data.main.temp;
+              const weatherDescription = data.weather[0].description;
+
+              const weatherInfoElement = document.getElementById('weather-info');
+              weatherInfoElement.textContent = `気温: ${temperature}℃, 天気: ${weatherDescription}`;
+            })
+            .catch(error => {
+              console.error('天気情報の取得に失敗しました。', error);
+              const weatherInfoElement = document.getElementById('weather-info');
+              weatherInfoElement.textContent = '天気情報の取得に失敗しました。';
+            });
+        }, function(error) {
+          console.error('位置情報の取得に失敗しました。', error);
+          const locationElement = document.getElementById('location');
+          locationElement.textContent = '位置情報の取得に失敗しました。';
+        });
+      } else {
+        console.error('Geolocationは利用できません。');
+        const locationElement = document.getElementById('location');
+        locationElement.textContent = '位置情報を取得できません。';
+      }
+    }
+
+    // 位置情報を取得
+    getLocation();
+  </script>
+    
+    <footer>
+      <p>&copy; 2023 muraokun&emsp;無断転用原則禁止</p>
+    </footer>
+  </body>
+</html>
