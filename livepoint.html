@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>megami web</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="murao.ico">
+    <style>
+        h1, p#asahi-weather, p#asahi-temperature, p#yokohama-station-weather, p#yokohama-station-temperature {
+      text-align: center; /* h1要素とp要素のテキストを中央に揃える */
+      font-size: 40px; /* テキストの文字サイズを40pxに設定 */
+        }
+      /* Style for the menu bar */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgb(140, 233, 233);
+        padding: 10px;
+      }
+
+      /* Style for the menu items */
+      nav ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav li {
+        margin: 0 10px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: black;
+      }
+
+      /* Style for the image and text */
+      nav .right {
+        display: flex;
+        align-items: center;
+      }
+
+      nav .right img {
+        height: 30px;
+        margin-right: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div style="text-align:center;">
+    <p style="font-size: 30px; color: blue;" class="text">◇&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地点天候情報&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;◇</p>
+    </div>
+
+    <h1>横浜市旭区の天気情報</h1>
+  <p id="asahi-weather">天気情報を取得中...</p>
+  <p id="asahi-temperature">気温情報を取得中...</p>
+
+  <h1>横浜市横浜駅付近の天気情報</h1>
+  <p id="yokohama-station-weather">天気情報を取得中...</p>
+  <p id="yokohama-station-temperature">気温情報を取得中...</p>
+
+  <script>
+    // OpenWeatherMap APIのAPIキーを設定
+    const apiKey = '3041d2d94778e856aa9474ddef7a5d1e'; // ここにあなたのOpenWeatherMap APIキーを入力
+
+    // 横浜市旭区の緯度と経度
+    const asahiLatitude = 35.4418;
+    const asahiLongitude = 139.6453;
+
+    // 横浜市横浜駅付近の緯度と経度
+    const yokohamaStationLatitude = 35.4654;
+    const yokohamaStationLongitude = 139.6229;
+
+    function getWeatherData(latitude, longitude, weatherElement, temperatureElement) {
+      // OpenWeatherMap APIを呼び出して天気情報を取得
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric&lang=ja`)
+        .then(response => response.json())
+        .then(data => {
+          const temperature = data.main.temp;
+          const weatherDescription = data.weather[0].description;
+
+          weatherElement.textContent = `天気: ${weatherDescription}`;
+          temperatureElement.textContent = `気温: ${temperature}℃`;
+        })
+        .catch(error => {
+          console.error('天気情報の取得に失敗しました。', error);
+          weatherElement.textContent = '天気情報の取得に失敗しました。';
+          temperatureElement.textContent = '気温情報の取得に失敗しました。';
+        });
+    }
+
+    // 横浜市旭区の天気情報を取得
+    const asahiWeatherElement = document.getElementById('asahi-weather');
+    const asahiTemperatureElement = document.getElementById('asahi-temperature');
+    getWeatherData(asahiLatitude, asahiLongitude, asahiWeatherElement, asahiTemperatureElement);
+
+    // 横浜市横浜駅付近の天気情報を取得
+    const yokohamaStationWeatherElement = document.getElementById('yokohama-station-weather');
+    const yokohamaStationTemperatureElement = document.getElementById('yokohama-station-temperature');
+    getWeatherData(yokohamaStationLatitude, yokohamaStationLongitude, yokohamaStationWeatherElement, yokohamaStationTemperatureElement);
+  </script>
+    
+    <br><br><br><br><br><br><br><br><br>
+    <footer>
+      <p>&copy; 2023 muraon_the_great&emsp;無断転用原則禁止</p>
+    </footer>
+  </body>
+</html>
