@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>megami web</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="murao.ico">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    #content {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    #inputText {
+      display: block;
+      margin: 0 auto;
+      margin-top: 30px; /* 上詰めのマージンを調整 */
+      text-align: center;
+      font-size: 16px;
+      padding: 10px;
+    }
+
+    #enlargedText {
+      font-size: 90px;
+      margin-top: 10px;
+      display: none;
+      text-align: center;
+    }
+
+    p {
+      display: inline-block;
+      vertical-align: top;
+      text-align: center;
+    }
+
+    a.button {
+      display: inline-block;
+      margin-left: 10px; /* 余白のサイズを指定 */
+      padding: 5px 22px; /* ボタンのパディングを設定 */
+      text-decoration: none;
+      background-color: #5865F2;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+    
+    <div style="text-align:center;">
+        <p style="font-size: 30px; color: blue;" class="text">◇&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文字拡大表示&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;◇</p>
+    </div>
+
+    <div>
+        <a class="button" href="https://muraonsan.github.io/muraonsss/">←</a><br><br>
+    </div>
+
+    <div style="text-align:center;">
+        <p style="font-size: 15px;" class="text">入力された文字を90pxに拡大し表示します</p>
+    </div>
+    
+    <input type="text" id="inputText" placeholder="文字を入力してください" oninput="enlargeText()">
+    <div id="enlargedText"></div>
+
+<script>
+    function enlargeText() {
+      var inputText = document.getElementById("inputText").value;
+      var enlargedText = document.getElementById("enlargedText");
+
+      if (inputText.trim() !== "") {
+        enlargedText.innerText = inputText;
+        enlargedText.style.display = "block";
+      } else {
+        enlargedText.innerText = "";
+        enlargedText.style.display = "none";
+      }
+    }
+  </script>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<footer class="footer">
+    <p>&copy; 2023 muraon_the_great&emsp;無断転用原則禁止</p>
+  </footer>
+
+</body>
+</html>
